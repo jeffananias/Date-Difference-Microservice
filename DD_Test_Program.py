@@ -3,9 +3,10 @@ import time
 REQUEST_FILE = "date_diff.txt"
 
 
-def response_is_ready(response):
-    """Checks if the text file contains a completed microservice response"""
-
+def response_is_ready(response: str) -> bool:
+    """
+    Checks if the text file contains a completed microservice response.
+    """
     if response.startswith("DAYS_REMAINING:"):
         return True
     elif response.startswith("OVERDUE:"):
@@ -18,7 +19,10 @@ def response_is_ready(response):
         return False
 
 
-def request_date_difference(given_date):
+def request_date_difference(given_date: str) -> str:
+    """
+    Return response based on request.
+    """
     # Write the request date into the text file
     with open(REQUEST_FILE, "w") as file:
         file.write(given_date)
@@ -37,6 +41,9 @@ def request_date_difference(given_date):
 
 
 def main():
+    """
+    Send test dates as requests.
+    """
     print("Date Difference Test Program")
     print("============================")
 
