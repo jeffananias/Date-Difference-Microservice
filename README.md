@@ -44,7 +44,7 @@ with open('date_diff.txt', 'w') as file:
 
 After the request is written, the microservice reads the date from `date_diff.txt`, calculates the result, and writes the response back into the same file.
 
-The requesting program can then read `date_diff.txt` to receive the result
+The requesting program can then read `date_diff.txt` to receive the result.
 
 Example receive code:
 
@@ -133,7 +133,7 @@ In second terminal run the test program:
 python DD_Test_Program.py
 ```
 
-The test program will send example dates to Date_Difference.py and print the response
+The test program will send example dates to Date_Difference.py and print the response.
 
 ---
 
@@ -150,4 +150,4 @@ Response received: OVERDUE: 2403
 
 Request sent: bad-date
 Response received: DATE_DIFF_ERROR: Invalid date format. Use YYYY-MM-DD.
-``` 
+```
