@@ -42,17 +42,46 @@ def is_response_message(file_text: str) -> bool:
         return False
 
 
+def greet() -> None:
+    """
+    Greet user and advise date format.
+    """
+    print('Date Difference Microservice is running.\n')
+    print('Waiting for date request in date_diff.txt.\n')
+    print('Please use date request format: YYYY-MM-DD\n')
+
+
+def process_request(file_text: str, last_file_text: str) -> str:
+    """
+    Return response based on request and print and write file text if new.
+    """
+    if file_text != '' and file_text != last_file_text:
+        
+        # Ignore file that already has a response in it
+        if is_response_message(file_text):
+            return file_text
+
+        # Else, treat the file contents as a new request
+        else:
+            print('Request Received: ' + file_text)
+
+            response = calculate_date_difference(file_text)
+
+            with open(REQUEST_FILE, 'w') as file:
+                file.write(response)
+
+            print('Response Sent: ' + response)
+            print()
+
+            return response
+
 def run_microservice() -> None:
     """
     Run Date_Difference microservice as continuous process.
     """
-    print('Date Difference Microservice is running ')
-    print('\nWaiting for date request in date_diff.txt ')
-    print('\nPlease use date request format: YYYY-MM-DD')
-    print()
+    greet()
 
     last_file_text = ''
-
     while True:
         try:
             with open(REQUEST_FILE, 'r') as file:
@@ -62,25 +91,7 @@ def run_microservice() -> None:
                 file.write('')
             file_text = ''
 
-        if file_text != '' and file_text != last_file_text:
-
-            # Ignore file that already has a response in it
-            if is_response_message(file_text):
-                last_file_text = file_text
-
-            # Else, treat the file contents as a new request
-            else:
-                print('Request Received: ' + file_text)
-
-                response = calculate_date_difference(file_text)
-
-                with open(REQUEST_FILE, 'w') as file:
-                    file.write(response)
-
-                print('Response Sent: ' + response)
-                print()
-
-                last_file_text = response
+        last_file_text = process_request(file_text, last_file_text)
 
         time.sleep(0.5)
 
