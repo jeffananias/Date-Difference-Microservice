@@ -1,1 +1,0 @@
-DATE_DIFF_ERROR: Invalid date format. Use YYYY-MM-DD.
