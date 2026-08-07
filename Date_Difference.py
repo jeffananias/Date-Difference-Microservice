@@ -19,9 +19,9 @@ def calculate_date_difference(given_date_text: str) -> str:
     date_difference = (given_date - date.today()).days
 
     if date_difference > 0:
-        return 'DAYS_REMAINING: ' + str(days_difference)
+        return 'DAYS_REMAINING: ' + str(date_difference)
     elif date_difference < 0:
-        return 'OVERDUE: ' + str(abs(days_difference))
+        return 'OVERDUE: ' + str(abs(date_difference))
     else:
         return 'DUE_TODAY: 0'
 
