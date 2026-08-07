@@ -15,20 +15,15 @@ def calculate_date_difference(given_date_text: str) -> str:
     except ValueError:
         return 'DATE_DIFF_ERROR: Invalid date format. Use YYYY-MM-DD.'
 
-    current_date = date.today()
-
     # Positive diff is future date; negative diff is past date
-    date_difference = given_date - current_date
-    days_difference = date_difference.days
+    date_difference = (given_date - date.today()).days
 
-    if days_difference > 0:
-        response = 'DAYS_REMAINING: ' + str(days_difference)
-    elif days_difference < 0:
-        response = 'OVERDUE: ' + str(abs(days_difference))
+    if date_difference > 0:
+        return 'DAYS_REMAINING: ' + str(days_difference)
+    elif date_difference < 0:
+        return 'OVERDUE: ' + str(abs(days_difference))
     else:
-        response = 'DUE_TODAY: 0'
-
-    return response
+        return 'DUE_TODAY: 0'
 
 
 def is_response_message(file_text: str) -> bool:
