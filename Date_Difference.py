@@ -46,8 +46,8 @@ def greet() -> None:
     """
     Greet user and advise date format.
     """
-    print('Date Difference Microservice is running.\n')
-    print('Waiting for date request in date_diff.txt.\n')
+    print('\nDate Difference Microservice is running.')
+    print('Waiting for date request in date_diff.txt.')
     print('Please use date request format: YYYY-MM-DD\n')
 
 
