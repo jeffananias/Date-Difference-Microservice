@@ -15,10 +15,8 @@ def calculate_date_difference(given_date_text: str) -> str:
     except ValueError:
         return 'DATE_DIFF_ERROR: Invalid date format. Use YYYY-MM-DD.'
 
-    # Get today's date
     current_date = date.today()
 
-    # Subtract today's date from given date
     # Positive diff is future date; negative diff is past date
     date_difference = given_date - current_date
     days_difference = date_difference.days
@@ -69,8 +67,6 @@ def run_microservice() -> None:
                 file.write('')
             file_text = ''
 
-        # Only start working if the file has text and it is different from the
-        # last thing read
         if file_text != '' and file_text != last_file_text:
 
             # Ignore file that already has a response in it
