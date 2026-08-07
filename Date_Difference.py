@@ -4,7 +4,7 @@ import time
 REQUEST_FILE = 'date_diff.txt'
 
 
-def calculate_date_difference(given_date_text: str) -> None:
+def calculate_date_difference(given_date_text: str) -> str:
     """
     Take a date string in YYYY-MM-DD format and compare it to today's date.
     Return a message showing if the date is in the future, past, or today.
@@ -33,7 +33,7 @@ def calculate_date_difference(given_date_text: str) -> None:
     return response
 
 
-def is_response_message(file_text: str) -> None:
+def is_response_message(file_text: str) -> bool:
     """
     Check response to avoid reading Date_Difference response as new request.
     """
