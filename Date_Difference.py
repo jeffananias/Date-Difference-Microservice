@@ -86,8 +86,8 @@ def process_request(file_text: str, last_file_text: str) -> str:
         else:
             print("Request Received: " + file_text)
             response = calculate_date_difference(file_text)
-            with open(REQUEST_FILE, "w") as file:
-                file.write(response)
+            with open(REQUEST_FILE, "w") as f:
+                f.write(response)
             print("Response Sent:" + response + "\n")
             return response
     return last_file_text
