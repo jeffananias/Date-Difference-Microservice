@@ -41,6 +41,23 @@ def get_file_text() -> str:
     return file_text
 
 
+def process_request(file_text: str, last_file_text: str) -> str:
+    """Return response based on request and write file text if new."""
+    if file_text != "" and file_text != last_file_text:
+        # Ignore file that already has a response in it
+        if is_response_message(file_text):
+            return file_text
+        # Else, treat the file contents as a new request
+        else:
+            print("Request Received: " + file_text)
+            response = calculate_date_difference(file_text)
+            with open(REQUEST_FILE, "w") as f:
+                f.write(response)
+            print("Response Sent:" + response + "\n")
+            return response
+    return last_file_text
+
+
 def is_response_message(file_text: str) -> bool:
     """
     Return True if file_text is response instead of request;
@@ -74,23 +91,6 @@ def calculate_date_difference(given_date_text: str) -> str:
         return "OVERDUE: " + str(abs(date_difference))
     else:
         return "DUE_TODAY: 0"
-
-
-def process_request(file_text: str, last_file_text: str) -> str:
-    """Return response based on request and write file text if new."""
-    if file_text != "" and file_text != last_file_text:
-        # Ignore file that already has a response in it
-        if is_response_message(file_text):
-            return file_text
-        # Else, treat the file contents as a new request
-        else:
-            print("Request Received: " + file_text)
-            response = calculate_date_difference(file_text)
-            with open(REQUEST_FILE, "w") as f:
-                f.write(response)
-            print("Response Sent:" + response + "\n")
-            return response
-    return last_file_text
 
 
 if __name__ == "__main__":
