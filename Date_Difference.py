@@ -1,4 +1,4 @@
-# Authors: Jeff Ananias, Mitchell Walker
+# Authors: Mitchell Walker, Jeff Ananias
 # Course: CS361
 # Assignment: 9 - Big Pool Implementation
 # Microservice: Date Difference
