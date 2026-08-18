@@ -3,8 +3,8 @@
 # Assignment: 9 - Big Pool Implementation
 # Microservice: Date Difference
 
-import datetime
 import time
+from datetime import date, datetime
 
 REQUEST_FILE = "date_diff.txt"
 
@@ -82,8 +82,7 @@ def calculate_date_difference(given_date_text: str) -> str:
         return "DATE_DIFF_ERROR: Invalid date format. Use YYYY-MM-DD."
 
     # Positive diff is future date; negative diff is past date
-    today = datetime.date.now(tz=datetime.timezone.utc).date()
-    date_difference = (given_date - today).days
+    date_difference = (given_date - date.today()).days
 
     if date_difference > 0:
         return "DAYS_REMAINING: " + str(date_difference)
